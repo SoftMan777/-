@@ -1,0 +1,59 @@
+using System;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a, b, x, y, N, max, min,d,min1;
+            a = Convert.ToInt32(Console.ReadLine());
+            b = Convert.ToInt32(Console.ReadLine());
+            x = Convert.ToInt32(Console.ReadLine());
+            y = Convert.ToInt32(Console.ReadLine());
+            if(x>y)
+            {
+                d = x - y;
+                min1 = y;
+            }
+            else
+            {
+                d = y - x;
+                min1 = x;
+            }
+            if (a > b)
+            {
+                N = a - b;
+                min = b;
+            }
+            else
+            {
+                N = b - a;
+                min = a;
+            }
+            int[] Prois = new int[N];
+            int[] suum = new int[d];
+            for (int i = 0; i < N; i++)
+            {
+                Prois[i] = (min + i);
+                if (((Prois[i] % 2) == 0) && ((Prois[i] % 3) == 0))
+                {
+                    Console.WriteLine(Prois[i]);
+                }
+
+
+            }
+            for (int i = 0; i < d; i++)
+            {
+                suum[i] = (min1 + i);
+                if (((suum[i] % 13) == 0))
+                {
+                    Console.WriteLine(suum[i]);
+                }
+
+
+            }
+            Console.ReadKey();
+        }
+    }
+}
