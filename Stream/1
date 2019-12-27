@@ -1,0 +1,61 @@
+using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Text;
+
+class Program
+{
+    public static int c = 0;
+    public static int b = 0;
+    public static void D()
+    {
+
+        ConsoleKeyInfo input1 = new ConsoleKeyInfo();
+        do
+        {
+            c = c + 1;
+            input1 = Console.ReadKey();
+            Console.WriteLine(c);
+        }
+        while (input1.Key == ConsoleKey.NumPad0);
+    }
+    public static void C()
+    {
+
+        ConsoleKeyInfo input=new ConsoleKeyInfo();
+        do
+        {
+            b = b + 1;
+            input = Console.ReadKey();
+            Console.WriteLine(b);
+        }
+        while (input.Key == ConsoleKey.Spacebar);
+    }
+    public static void Main(string[] args)
+    {
+        Thread myThread1 = new Thread(M);
+        Thread myThread2 = new Thread(D);
+        Thread myThread3 = new Thread(C);
+        myThread1.Start();
+        myThread2.Start();
+        myThread3.Start();
+    }
+
+
+    private static void M()
+    {
+        for (int i = 10000; i > 0; i--)
+        {
+            Thread.Sleep(10000);
+            if (i == 10000)
+            {
+                Console.WriteLine($"Подсчет нажатий..." + "\n" + "Первый игрок" + b + "\n" + "Второй игрок" + c);
+                
+            }
+        }
+        while (true)
+            Console.ReadKey();
+    }
+}
+
+
